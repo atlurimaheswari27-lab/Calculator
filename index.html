@@ -5,9 +5,10 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
 
-  <title>Advanced Calculator</title>
+  <title>Calculator</title>
 
   <link rel="stylesheet" href="style.css">
 
@@ -15,58 +16,69 @@
 
 <body>
 
+  <!-- Calculator Container -->
+
   <div class="calculator">
 
-    <!-- Display -->
+    <!-- Display Screen -->
 
     <input type="text" id="display" readonly>
 
-    <!-- Buttons -->
+    <!-- Buttons Section -->
 
     <div class="buttons">
 
       <!-- First Row -->
 
-      <button class="operator">(</button>
-      <button class="operator">)</button>
-      <button class="operator">%</button>
-      <button class="clear">AC</button>
+      <button onclick="clearDisplay()">C</button>
+
+      <button onclick="deleteLast()">DEL</button>
+
+      <button onclick="appendValue('/')">/</button>
+
+      <button onclick="appendValue('*')">*</button>
 
       <!-- Second Row -->
 
-      <button class="number">7</button>
-      <button class="number">8</button>
-      <button class="number">9</button>
-      <button class="operator">/</button>
+      <button onclick="appendValue('7')">7</button>
+
+      <button onclick="appendValue('8')">8</button>
+
+      <button onclick="appendValue('9')">9</button>
+
+      <button onclick="appendValue('-')">-</button>
 
       <!-- Third Row -->
 
-      <button class="number">4</button>
-      <button class="number">5</button>
-      <button class="number">6</button>
-      <button class="operator">*</button>
+      <button onclick="appendValue('4')">4</button>
+
+      <button onclick="appendValue('5')">5</button>
+
+      <button onclick="appendValue('6')">6</button>
+
+      <button onclick="appendValue('+')">+</button>
 
       <!-- Fourth Row -->
 
-      <button class="number">1</button>
-      <button class="number">2</button>
-      <button class="number">3</button>
-      <button class="operator">-</button>
+      <button onclick="appendValue('1')">1</button>
+
+      <button onclick="appendValue('2')">2</button>
+
+      <button onclick="appendValue('3')">3</button>
+
+      <button onclick="calculate()">=</button>
 
       <!-- Fifth Row -->
 
-      <button class="number">0</button>
-      <button class="number">.</button>
-      <button class="delete">DEL</button>
-      <button class="operator">+</button>
+      <button onclick="appendValue('0')">0</button>
 
-      <!-- Equal Button -->
-
-      <button class="equal">=</button>
+      <button onclick="appendValue('.')">.</button>
 
     </div>
 
   </div>
+
+  <!-- JavaScript File -->
 
   <script src="script.js"></script>
 
