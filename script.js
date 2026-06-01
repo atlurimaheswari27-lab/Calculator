@@ -1,45 +1,129 @@
-let display = document.getElementById("display");
+// Select Display
 
-let buttons = document.querySelectorAll("button");
+const display = document.getElementById("display");
 
-buttons.forEach(function(button){
+// Append Values To Display
 
-    button.addEventListener("click", function(){
+function appendValue(value){
 
-        let value = button.innerText;
+  display.value += value;
 
-        // Clear Display
+}
 
-        if(value === "AC"){
-            display.value = "";
-        }
+// Clear Entire Display
 
-        // Delete Last Character
+function clearDisplay(){
 
-        else if(value === "DEL"){
-            display.value = display.value.slice(0,-1);
-        }
+  display.value = "";
 
-        // Calculate Result
+}
 
-        else if(value === "="){
+// Delete Last Character
 
-            try{
-                display.value = eval(display.value);
-            }
+function deleteLast(){
 
-            catch{
-                display.value = "Error";
-            }
+  display.value = display.value.slice(0, -1);
 
-        }
+}
 
-        // Add Values
+// Calculate Result
 
-        else{
-            display.value += value;
-        }
+function calculate(){
 
-    });
+  try{
+
+    display.value = eval(display.value);
+
+  }
+
+  catch(error){
+
+    display.value = "Error";
+
+  }
+
+}
+
+// Keyboard Support
+
+document.addEventListener("keydown", function(event){
+
+  const key = event.key;
+
+  // Numbers
+
+  if(
+    key >= "0" && key <= "9"
+  ){
+
+    appendValue(key);
+
+  }
+
+  // Operators
+
+  else if(
+    key === "+" ||
+    key === "-" ||
+    key === "*" ||
+    key === "/" ||
+    key === "."
+  ){
+
+    appendValue(key);
+
+  }
+
+  // Enter Key
+
+  else if(key === "Enter"){
+
+    calculate();
+
+  }
+
+  // Backspace Key
+
+  else if(key === "Backspace"){
+
+    deleteLast();
+
+  }
+
+  // Escape Key
+
+  else if(key === "Escape"){
+
+    clearDisplay();
+
+  }
+
+});
+
+// Welcome Message
+
+window.onload = function(){
+
+  console.log("Calculator Loaded Successfully");
+
+};
+
+// Button Click Animation
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", function(){
+
+    button.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+
+      button.style.transform = "scale(1)";
+
+    },100);
+
+  });
 
 });
